@@ -1,21 +1,19 @@
 import { useState } from 'react';
-import {
-  Container,
-  Avatar,
-  Button,
-  Paper,
-  Typography,
-  TextField,
-  Slider,
-  Switch,
-  FormControlLabel,
-  RadioGroup,
-  Radio,
-  Checkbox,
-  Alert,
-  Box,
-  Stack,
-} from '@mui/material';
+import Container from '@mui/material/Container';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
+import Slider from '@mui/material/Slider';
+import Switch from '@mui/material/Switch';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import RadioGroup from '@mui/material/RadioGroup';
+import Radio from '@mui/material/Radio';
+import Checkbox from '@mui/material/Checkbox';
+import Alert from '@mui/material/Alert';
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
 
 function ProfilePlayground() {
   const [profile, setProfile] = useState({
