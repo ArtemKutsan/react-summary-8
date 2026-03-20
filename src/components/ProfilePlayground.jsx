@@ -212,6 +212,19 @@ function ProfilePlayground() {
               }
               label="Онлайн"
             />
+
+            {/* Стиль карточки */}
+            <Box>
+              <RadioGroup
+                value={profile.cardVariant}
+                onChange={(event) => update('cardVariant', event.target.value)}
+              >
+                <Stack direction="row" spacing={2}>
+                  <FormControlLabel value="elevation" control={<Radio />} label="С тенью" />
+                  <FormControlLabel value="outlined" control={<Radio />} label="С обводкой" />
+                </Stack>
+              </RadioGroup>
+            </Box>
           </Stack>
         </Box>
       </Box>
