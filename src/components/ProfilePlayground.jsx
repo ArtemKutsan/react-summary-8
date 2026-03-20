@@ -42,6 +42,7 @@ function ProfilePlayground() {
           flexShrink: 0,
           borderRadius: 6,
           boxShadow: profile.cardVariant === 'elevation' ? '0 8px 16px rgba(0,0,0,0.075)' : 'none',
+          height: 'fit-content',
         }}
       >
         <Stack spacing={2}>
