@@ -13,12 +13,17 @@ import Radio from '@mui/material/Radio';
 import Checkbox from '@mui/material/Checkbox';
 import Alert from '@mui/material/Alert';
 import Box from '@mui/material/Box';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 import Stack from '@mui/material/Stack';
+
+const professions = ['Разработчик', 'Дизайнер', 'Менеджер'];
 
 function ProfilePlayground() {
   const [profile, setProfile] = useState({
     name: 'Artem',
     surname: 'Kutsan',
+    profession: 'Разработчик',
     avatarSize: 60,
     buttonColor: 'primary',
     buttonSize: 'medium',
@@ -51,6 +56,7 @@ function ProfilePlayground() {
                 width: profile.avatarSize,
                 height: profile.avatarSize,
                 transition: '0.2s',
+                // bgcolor: '#1976d2',
               }}
             >
               {profile.name[0]}
@@ -94,7 +100,7 @@ function ProfilePlayground() {
               minHeight: '2rem',
             }}
           >
-            Разработчик
+            {profile.profession}
           </Typography>
 
           <Stack direction="row" spacing={2}>
@@ -149,6 +155,7 @@ function ProfilePlayground() {
                 '& .MuiInputBase-root': {
                   height: 40,
                   borderRadius: 3,
+                  bgcolor: '#f5f5f5',
                 },
               }}
             />
@@ -163,11 +170,47 @@ function ProfilePlayground() {
                 '& .MuiInputBase-root': {
                   height: 40,
                   borderRadius: 3,
-                  backgroundColor: '#f8fafc',
+                  bgcolor: '#f5f5f5',
                 },
               }}
             />
           </Stack>
+
+          <Select
+            value={profile.profession}
+            onChange={(event) => update('profession', event.target.value)}
+            size="small"
+            fullWidth
+            sx={{
+              '& .MuiOutlinedInput-root': {
+                height: 40,
+                borderRadius: 3,
+                backgroundColor: '#f8fafc',
+              },
+              '& .MuiOutlinedInput-notchedOutline': {
+                borderRadius: 3,
+              },
+            }}
+            MenuProps={{
+              PaperProps: {
+                sx: {
+                  borderRadius: 3,
+                  boxShadow: '0 4px 16px rgba(0, 0, 0, 0.125)',
+                },
+              },
+              MenuListProps: {
+                sx: {
+                  py: 0,
+                },
+              },
+            }}
+          >
+            {professions.map((item) => (
+              <MenuItem key={item} value={item} sx={{ py: 1 }}>
+                {item}
+              </MenuItem>
+            ))}
+          </Select>
 
           {/* Размер аватара */}
           <Box>
