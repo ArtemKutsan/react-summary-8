@@ -178,6 +178,19 @@ function ProfilePlayground() {
                 onChange={(event, value) => update('avatarSize', value)}
               />
             </Box>
+
+            {/* Цвет кнопок */}
+            <RadioGroup
+              value={profile.buttonColor}
+              onChange={(event) => update('buttonColor', event.target.value)}
+            >
+              <Stack direction="row" spacing={2}>
+                <FormControlLabel value="primary" control={<Radio />} label="Primary" />
+                <FormControlLabel value="secondary" control={<Radio />} label="Secondary" />
+                <FormControlLabel value="success" control={<Radio />} label="Success" />
+                <FormControlLabel value="error" control={<Radio />} label="Error" />
+              </Stack>
+            </RadioGroup>
           </Stack>
         </Box>
       </Box>
