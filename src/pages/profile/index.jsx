@@ -1,6 +1,6 @@
 // src/pages/profile/index.jsx
 import Meta from '../../components/Meta';
-import Profile from '../../components/Profile';
+import ProfilePlayground from '../../components/ProfilePlayground';
 
 function ProfilePage() {
   return (
@@ -8,7 +8,7 @@ function ProfilePage() {
       <Meta title="Profile App" />
 
       {/* <div className="container max-w-5xl"> */}
-      <Profile />
+      <ProfilePlayground />
       {/* </div> */}
     </>
   );
