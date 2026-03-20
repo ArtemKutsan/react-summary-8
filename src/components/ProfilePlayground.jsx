@@ -13,8 +13,6 @@ import {
   Radio,
   Checkbox,
   Alert,
-  Select,
-  MenuItem,
   Box,
   Stack,
 } from '@mui/material';
@@ -189,6 +187,18 @@ function ProfilePlayground() {
                 <FormControlLabel value="secondary" control={<Radio />} label="Secondary" />
                 <FormControlLabel value="success" control={<Radio />} label="Success" />
                 <FormControlLabel value="error" control={<Radio />} label="Error" />
+              </Stack>
+            </RadioGroup>
+
+            {/* Размер кнопок */}
+            <RadioGroup
+              value={profile.buttonSize}
+              onChange={(event) => update('buttonSize', event.target.value)}
+            >
+              <Stack direction="row" spacing={2}>
+                <FormControlLabel value="small" control={<Radio />} label="Small" />
+                <FormControlLabel value="medium" control={<Radio />} label="Medium" />
+                <FormControlLabel value="large" control={<Radio />} label="Large" />
               </Stack>
             </RadioGroup>
           </Stack>
