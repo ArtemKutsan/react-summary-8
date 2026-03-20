@@ -24,7 +24,7 @@ function ProfilePlayground() {
     surname: 'Kutsan',
     profession: 'Разработчик',
     avatarSize: 60,
-    buttonColor: 'primary',
+    mainColor: 'primary',
     buttonSize: 'medium',
     isOnline: false,
     cardVariant: 'elevation',
@@ -55,7 +55,7 @@ function ProfilePlayground() {
                 width: profile.avatarSize,
                 height: profile.avatarSize,
                 transition: '0.2s',
-                // bgcolor: '#1976d2',
+                bgcolor: (theme) => theme.palette[profile.mainColor].main,
               }}
             >
               {profile.name[0]}
@@ -105,7 +105,7 @@ function ProfilePlayground() {
           <Stack direction="row" spacing={2}>
             <Button
               variant="contained"
-              color={profile.buttonColor}
+              color={profile.mainColor}
               size={profile.buttonSize}
               sx={{
                 borderRadius: 3,
@@ -120,7 +120,7 @@ function ProfilePlayground() {
 
             <Button
               variant="outlined"
-              color={profile.buttonColor}
+              color={profile.mainColor}
               size={profile.buttonSize}
               sx={{
                 borderRadius: 3,
@@ -224,8 +224,8 @@ function ProfilePlayground() {
 
           {/* Цвет кнопок */}
           <RadioGroup
-            value={profile.buttonColor}
-            onChange={(event) => update('buttonColor', event.target.value)}
+            value={profile.mainColor}
+            onChange={(event) => update('mainColor', event.target.value)}
           >
             <Stack direction="row" spacing={2}>
               <FormControlLabel value="primary" control={<Radio />} label="Primary" />
