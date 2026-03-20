@@ -201,6 +201,17 @@ function ProfilePlayground() {
                 <FormControlLabel value="large" control={<Radio />} label="Large" />
               </Stack>
             </RadioGroup>
+
+            {/* Онлайн */}
+            <FormControlLabel
+              control={
+                <Switch
+                  checked={profile.isOnline}
+                  onChange={(event) => update('isOnline', event.target.checked)}
+                />
+              }
+              label="Онлайн"
+            />
           </Stack>
         </Box>
       </Box>
