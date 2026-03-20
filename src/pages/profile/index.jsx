@@ -1,5 +1,7 @@
 // src/pages/profile/index.jsx
 import Meta from '../../components/Meta';
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
 import ProfilePlayground from '../../components/ProfilePlayground';
 
 function ProfilePage() {
@@ -7,9 +9,11 @@ function ProfilePage() {
     <>
       <Meta title="Profile App" />
 
-      {/* <div className="container max-w-5xl"> */}
-      <ProfilePlayground />
-      {/* </div> */}
+      <Box component="main">
+        <Container maxWidth="md">
+          <ProfilePlayground />
+        </Container>
+      </Box>
     </>
   );
 }
