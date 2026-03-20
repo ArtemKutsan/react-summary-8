@@ -5,7 +5,7 @@ import Container from '@mui/material/Container';
 function Footer() {
   return (
     <Box component="footer">
-      <Container maxWidth="md" sx={{ py: 3 }}>
+      <Container maxWidth="md" sx={{ py: 2 }}>
         <Typography textAlign="center">© 2026. Все права защищены.</Typography>
       </Container>
     </Box>
