@@ -25,6 +25,7 @@ function ProfilePlayground() {
     surname: 'Kutsan',
     avatarSize: 60,
     buttonColor: 'primary',
+    buttonSize: 'medium',
     isOnline: false,
     cardVariant: 'elevation',
     showAlert: true,
@@ -40,7 +41,7 @@ function ProfilePlayground() {
           variant={profile.cardVariant === 'outlined' ? 'outlined' : 'elevation'}
           sx={{
             p: 3,
-            width: 400,
+            width: 420,
             flexShrink: 0,
             borderRadius: 6,
             boxShadow:
@@ -48,6 +49,7 @@ function ProfilePlayground() {
           }}
         >
           <Stack spacing={2}>
+            <Typography variant="h6">Карточка профиля</Typography>
             <Stack direction="row" spacing={2} alignItems="center">
               <Avatar
                 sx={{
@@ -104,9 +106,10 @@ function ProfilePlayground() {
               <Button
                 variant="contained"
                 color={profile.buttonColor}
+                size={profile.buttonSize}
                 sx={{
                   borderRadius: 3,
-                  height: 40,
+                  // height: 40,
                   boxShadow: '0 4px 16px rgba(0, 0, 0, 0.125)',
                   '&:hover': { boxShadow: 'none' },
                 }}
@@ -117,9 +120,10 @@ function ProfilePlayground() {
               <Button
                 variant="outlined"
                 color={profile.buttonColor}
+                size={profile.buttonSize}
                 sx={{
                   borderRadius: 3,
-                  height: 40,
+                  // height: 40,
                 }}
               >
                 Предложить работу
@@ -129,7 +133,41 @@ function ProfilePlayground() {
         </Paper>
 
         {/* Правый блок */}
-        <Box flex="1"></Box>
+        <Box flex="1">
+          <Stack spacing={2}>
+            {/* Имя + Фамилия */}
+            <Stack direction="row" spacing={2}>
+              <TextField
+                label="Имя"
+                value={profile.name}
+                onChange={(event) => update('name', event.target.value)}
+                size="small"
+                fullWidth
+                sx={{
+                  '& .MuiInputBase-root': {
+                    height: 40,
+                    borderRadius: 3,
+                  },
+                }}
+              />
+
+              <TextField
+                label="Фамилия"
+                value={profile.surname}
+                onChange={(event) => update('surname', event.target.value)}
+                size="small"
+                fullWidth
+                sx={{
+                  '& .MuiInputBase-root': {
+                    height: 40,
+                    borderRadius: 3,
+                    backgroundColor: '#f8fafc',
+                  },
+                }}
+              />
+            </Stack>
+          </Stack>
+        </Box>
       </Box>
     </Container>
   );
