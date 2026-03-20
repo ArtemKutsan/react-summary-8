@@ -69,7 +69,6 @@ function ProfilePlayground() {
                 <Typography
                   sx={{
                     color: profile.isOnline ? 'white' : 'gray',
-                    border: profile.isOnline ? 'none' : '1px solid lightgray',
                     backgroundColor: profile.isOnline ? '#2e7d32' : 'transparent',
                     borderRadius: '1rem',
                     display: 'inline-flex',
@@ -78,6 +77,7 @@ function ProfilePlayground() {
                     px: 1,
                     minHeight: '1.5rem',
                     fontSize: '0.875rem',
+                    transition: '0.2s',
                   }}
                 >
                   {profile.isOnline ? '● Онлайн' : '○ Офлайн'}
@@ -112,6 +112,7 @@ function ProfilePlayground() {
                   // height: 40,
                   boxShadow: '0 4px 16px rgba(0, 0, 0, 0.125)',
                   '&:hover': { boxShadow: 'none' },
+                  transition: '0.2s',
                 }}
               >
                 Написать
@@ -166,6 +167,17 @@ function ProfilePlayground() {
                 }}
               />
             </Stack>
+
+            {/* Размер аватара */}
+            <Box>
+              <Typography>Размер аватара: {profile.avatarSize}px</Typography>
+              <Slider
+                value={profile.avatarSize}
+                min={60}
+                max={120}
+                onChange={(event, value) => update('avatarSize', value)}
+              />
+            </Box>
           </Stack>
         </Box>
       </Box>
