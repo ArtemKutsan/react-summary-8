@@ -1,3 +1,5 @@
+// src/components/ProfileCard.jsx
+import { useState, useRef } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
@@ -11,11 +13,31 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContentText from '@mui/material/DialogContentText';
 import Tooltip from '@mui/material/Tooltip';
-import { useState } from 'react';
 import { jobButtonTexts, professions } from '../constants';
 
-function ProfileCard({ profile }) {
+function ProfileCard({ profile, update }) {
+  // Состояние модального окна
   const [jobDialogOpen, setJobDialogOpen] = useState(false);
+
+  // useRef нужен для получения ссылки элемент DOM - скрытый инпут
+  const fileInputRef = useRef(null);
+
+  // Обработчик нажатия на кнопку "Загрузить фото"
+  const handlePhotoUpload = () => {
+    fileInputRef.current?.click(); // програмно вызывает клик по скрытому input
+  };
+
+  // Обработчик загрузки фала фото
+  const handleFileChange = (event) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        update('avatarUrl', e.target?.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   const handleAlertClick = () => {
     alert('Спасибо, что прочитал!');
@@ -73,10 +95,19 @@ function ProfileCard({ profile }) {
                 width: profile.avatarSize,
                 height: profile.avatarSize,
                 transition: '0.2s',
-                bgcolor: (theme) => theme.palette[profile.mainColor].main,
+                bgcolor: profile.avatarUrl
+                  ? 'transparent'
+                  : (theme) => theme.palette[profile.mainColor].main,
               }}
             >
-              {profile.name[0]}
+              {profile.avatarUrl ? null : profile.name[0]}
+              {profile.avatarUrl && (
+                <img
+                  src={profile.avatarUrl}
+                  alt="avatar"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+              )}
             </Avatar>
           </Badge>
 
@@ -153,6 +184,25 @@ function ProfileCard({ profile }) {
             </Button>
           </Tooltip>
         </Stack>
+
+        <Button
+          variant="text"
+          size="small"
+          onClick={handlePhotoUpload}
+          sx={{
+            borderRadius: 3,
+            transition: '0.2s',
+          }}
+        >
+          Загрузить фото
+        </Button>
+
+        {/* Инпут для загрузки файлов. Скрытый чтобы не стилизовать инпут
+        а использовать кнопку MUI. Клик по кнопке "Загрузить фото" програмно 
+        "кликает" по fileInputRef.current?.click() и запучкается handleFileChange
+        который запускает диалог открытия файла. useRef нужен для получения ссылки на
+        скрытый инпут */}
+        <input ref={fileInputRef} type="file" accept="image/*" hidden onChange={handleFileChange} />
 
         {profile.showAlert && (
           <Alert
