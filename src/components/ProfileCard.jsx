@@ -135,6 +135,26 @@ function ProfileCard({ profile, update }) {
           </Stack>
         </Stack>
 
+        <Button
+          variant="text"
+          size="small"
+          onClick={handlePhotoUpload}
+          sx={{
+            borderRadius: 3,
+            transition: '0.2s',
+            px: 2,
+          }}
+        >
+          Загрузить фото
+        </Button>
+
+        {/* Инпут для загрузки файлов. Скрытый чтобы не стилизовать инпут
+        а использовать кнопку MUI. Клик по кнопке "Загрузить фото" програмно 
+        "кликает" по fileInputRef.current?.click() и запучкается handleFileChange
+        который запускает диалог открытия файла. useRef нужен для получения ссылки на
+        скрытый инпут */}
+        <input ref={fileInputRef} type="file" accept="image/*" hidden onChange={handleFileChange} />
+
         <Typography
           sx={{
             display: 'inline-flex',
@@ -184,25 +204,6 @@ function ProfileCard({ profile, update }) {
             </Button>
           </Tooltip>
         </Stack>
-
-        <Button
-          variant="text"
-          size="small"
-          onClick={handlePhotoUpload}
-          sx={{
-            borderRadius: 3,
-            transition: '0.2s',
-          }}
-        >
-          Загрузить фото
-        </Button>
-
-        {/* Инпут для загрузки файлов. Скрытый чтобы не стилизовать инпут
-        а использовать кнопку MUI. Клик по кнопке "Загрузить фото" програмно 
-        "кликает" по fileInputRef.current?.click() и запучкается handleFileChange
-        который запускает диалог открытия файла. useRef нужен для получения ссылки на
-        скрытый инпут */}
-        <input ref={fileInputRef} type="file" accept="image/*" hidden onChange={handleFileChange} />
 
         {profile.showAlert && (
           <Alert
