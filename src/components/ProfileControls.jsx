@@ -1,3 +1,4 @@
+// src/components/ProfileControls.jsx
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
@@ -10,8 +11,7 @@ import Checkbox from '@mui/material/Checkbox';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import Stack from '@mui/material/Stack';
-
-const professions = ['Разработчик', 'Дизайнер', 'Менеджер'];
+import { professions } from '../constants';
 
 function ProfileControls({ profile, update }) {
   return (
@@ -79,9 +79,9 @@ function ProfileControls({ profile, update }) {
             },
           }}
         >
-          {professions.map((item) => (
-            <MenuItem key={item} value={item} sx={{ py: 1 }}>
-              {item}
+          {Object.entries(professions).map(([key, label]) => (
+            <MenuItem key={key} value={key} sx={{ py: 1 }}>
+              {label}
             </MenuItem>
           ))}
         </Select>
