@@ -4,6 +4,7 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
+import Badge from '@mui/material/Badge';
 
 function ProfileCard({ profile }) {
   return (
@@ -22,16 +23,31 @@ function ProfileCard({ profile }) {
       <Stack spacing={2}>
         <Typography variant="h6">Карточка профиля</Typography>
         <Stack direction="row" spacing={2} alignItems="center">
-          <Avatar
+          <Badge
+            overlap="circular"
+            variant="dot"
+            color="success"
+            anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+            invisible={!profile.isOnline}
             sx={{
-              width: profile.avatarSize,
-              height: profile.avatarSize,
-              transition: '0.2s',
-              bgcolor: (theme) => theme.palette[profile.mainColor].main,
+              '& .MuiBadge-badge': {
+                border: '2px solid white',
+                width: 10,
+                height: 10,
+              },
             }}
           >
-            {profile.name[0]}
-          </Avatar>
+            <Avatar
+              sx={{
+                width: profile.avatarSize,
+                height: profile.avatarSize,
+                transition: '0.2s',
+                bgcolor: (theme) => theme.palette[profile.mainColor].main,
+              }}
+            >
+              {profile.name[0]}
+            </Avatar>
+          </Badge>
 
           <Stack>
             <Typography variant="h6">
