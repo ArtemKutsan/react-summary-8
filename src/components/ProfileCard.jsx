@@ -7,6 +7,10 @@ import Stack from '@mui/material/Stack';
 import Badge from '@mui/material/Badge';
 
 function ProfileCard({ profile }) {
+  const handleAlertClick = () => {
+    alert('Спасибо, что прочитал!');
+  };
+
   return (
     <Paper
       elevation={profile.cardVariant === 'elevation' ? 3 : 0}
@@ -118,8 +122,31 @@ function ProfileCard({ profile }) {
         </Stack>
 
         {profile.showAlert && (
-          <Alert severity="info" sx={{ mt: 2, width: '100%', borderRadius: 3 }}>
-            Идет поиск стажеров
+          <Alert
+            severity="info"
+            sx={{
+              mt: 2,
+              width: '100%',
+              borderRadius: 3,
+              alignItems: 'center',
+              '& .MuiAlert-action': {
+                padding: 0,
+                // marginRight: 0,
+                marginLeft: 'auto',
+              },
+            }}
+            action={
+              <Button
+                color="inherit"
+                size="small"
+                onClick={handleAlertClick}
+                sx={{ borderRadius: 2, px: 1 }}
+              >
+                Понятно
+              </Button>
+            }
+          >
+            Не забудь загрузить аватарку!
           </Alert>
         )}
       </Stack>
