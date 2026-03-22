@@ -1,15 +1,19 @@
 // src/pages/profile/index.jsx
 import Meta from '../../components/Meta';
-import Profile from '../../components/Profile';
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
+import ProfilePlayground from '../../components/ProfilePlayground';
 
 function ProfilePage() {
   return (
     <>
       <Meta title="Profile App" />
 
-      {/* <div className="container max-w-5xl"> */}
-      <Profile />
-      {/* </div> */}
+      <Box component="main">
+        <Container maxWidth="md">
+          <ProfilePlayground />
+        </Container>
+      </Box>
     </>
   );
 }
