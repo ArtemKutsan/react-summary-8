@@ -11,6 +11,10 @@ function ProfileCard({ profile }) {
     alert('Спасибо, что прочитал!');
   };
 
+  const handleWriteClick = () => {
+    alert(`Напиши сообщение для ${profile.name} ${profile.surname}`);
+  };
+
   return (
     <Paper
       elevation={profile.cardVariant === 'elevation' ? 3 : 0}
@@ -105,6 +109,7 @@ function ProfileCard({ profile }) {
               '&:hover': { boxShadow: 'none' },
               transition: '0.2s',
             }}
+            onClick={handleWriteClick}
           >
             Написать
           </Button>
