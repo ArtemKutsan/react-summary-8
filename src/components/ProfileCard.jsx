@@ -15,6 +15,15 @@ function ProfileCard({ profile }) {
     alert(`Напиши сообщение для ${profile.name} ${profile.surname}`);
   };
 
+  const handleJobOfferClick = () => {
+    const confirmed = confirm(`Хочешь предложить работу ${profile.name} ${profile.surname}?`);
+    if (confirmed) {
+      alert(`Заявка отправлена! ${profile.name} ${profile.surname} получит предложение`);
+    } else {
+      alert('Отправка отменена');
+    }
+  };
+
   return (
     <Paper
       elevation={profile.cardVariant === 'elevation' ? 3 : 0}
@@ -121,6 +130,7 @@ function ProfileCard({ profile }) {
             sx={{
               borderRadius: 3,
             }}
+            onClick={handleJobOfferClick}
           >
             Предложить работу
           </Button>
