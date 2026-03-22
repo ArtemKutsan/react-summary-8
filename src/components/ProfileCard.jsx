@@ -10,6 +10,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContentText from '@mui/material/DialogContentText';
+import Tooltip from '@mui/material/Tooltip';
 import { useState } from 'react';
 import { jobButtonTexts, professions } from '../constants';
 
@@ -121,32 +122,36 @@ function ProfileCard({ profile }) {
         </Typography>
 
         <Stack direction="row" spacing={2}>
-          <Button
-            variant="contained"
-            color={profile.mainColor}
-            size={profile.buttonSize}
-            sx={{
-              borderRadius: 3,
-              boxShadow: '0 4px 16px rgba(0, 0, 0, 0.125)',
-              '&:hover': { boxShadow: 'none' },
-              transition: '0.2s',
-            }}
-            onClick={handleWriteClick}
-          >
-            Написать
-          </Button>
+          <Tooltip title="Нажми, чтобы написать сообщение">
+            <Button
+              variant="contained"
+              color={profile.mainColor}
+              size={profile.buttonSize}
+              sx={{
+                borderRadius: 3,
+                boxShadow: '0 4px 16px rgba(0, 0, 0, 0.125)',
+                '&:hover': { boxShadow: 'none' },
+                transition: '0.2s',
+              }}
+              onClick={handleWriteClick}
+            >
+              Написать
+            </Button>
+          </Tooltip>
 
-          <Button
-            variant="outlined"
-            color={profile.mainColor}
-            size={profile.buttonSize}
-            sx={{
-              borderRadius: 3,
-            }}
-            onClick={handleJobOfferClick}
-          >
-            {jobButtonTexts[profile.profession] || 'Предложить работу'}
-          </Button>
+          <Tooltip title="Нажми, чтобы отправить предложение">
+            <Button
+              variant="outlined"
+              color={profile.mainColor}
+              size={profile.buttonSize}
+              sx={{
+                borderRadius: 3,
+              }}
+              onClick={handleJobOfferClick}
+            >
+              {jobButtonTexts[profile.profession] || 'Предложить работу'}
+            </Button>
+          </Tooltip>
         </Stack>
 
         {profile.showAlert && (
