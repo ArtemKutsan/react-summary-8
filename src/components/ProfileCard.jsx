@@ -149,6 +149,23 @@ function ProfileCard({ profile }) {
             Не забудь загрузить аватарку!
           </Alert>
         )}
+
+        {profile.showAlert && (
+          <Stack spacing={2} sx={{ width: '100%' }}>
+            <Alert severity="success" sx={{ borderRadius: 3 }}>
+              Отлично! MUI работает
+            </Alert>
+            <Alert severity="info" sx={{ borderRadius: 3 }}>
+              Попробуй изменить цвет кнопок
+            </Alert>
+            <Alert severity="warning" sx={{ borderRadius: 3 }}>
+              Не забывай про атрибуты
+            </Alert>
+            <Alert severity="error" sx={{ borderRadius: 3 }}>
+              Ошибок нет, все отлично!
+            </Alert>
+          </Stack>
+        )}
       </Stack>
     </Paper>
   );
