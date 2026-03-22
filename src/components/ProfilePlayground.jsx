@@ -7,7 +7,7 @@ function ProfilePlayground() {
   const [profile, setProfile] = useState({
     name: 'Artem',
     surname: 'Kutsan',
-    profession: 'Разработчик',
+    profession: 'developer',
     avatarSize: 60,
     mainColor: 'primary',
     buttonSize: 'medium',

@@ -11,6 +11,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContentText from '@mui/material/DialogContentText';
 import { useState } from 'react';
+import { jobButtonTexts, professions } from '../constants';
 
 function ProfileCard({ profile }) {
   const [jobDialogOpen, setJobDialogOpen] = useState(false);
@@ -116,7 +117,7 @@ function ProfileCard({ profile }) {
             minHeight: '2rem',
           }}
         >
-          {profile.profession}
+          {professions[profile.profession] || profile.profession}
         </Typography>
 
         <Stack direction="row" spacing={2}>
@@ -144,7 +145,7 @@ function ProfileCard({ profile }) {
             }}
             onClick={handleJobOfferClick}
           >
-            Предложить работу
+            {jobButtonTexts[profile.profession] || 'Предложить работу'}
           </Button>
         </Stack>
 
@@ -209,10 +210,13 @@ function ProfileCard({ profile }) {
             },
           }}
         >
-          <DialogTitle id="job-dialog-title">Предложить работу</DialogTitle>
+          <DialogTitle id="job-dialog-title">
+            {jobButtonTexts[profile.profession] || 'Предложить работу'}
+          </DialogTitle>
           <DialogContent>
             <DialogContentText>
-              Хочешь предложить работу {profile.name} {profile.surname}?
+              Хочешь {jobButtonTexts[profile.profession]?.toLowerCase() || 'предложить работу'}{' '}
+              {profile.name} {profile.surname}?
             </DialogContentText>
           </DialogContent>
           <DialogActions>
