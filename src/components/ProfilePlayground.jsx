@@ -109,7 +109,6 @@ function ProfilePlayground() {
               size={profile.buttonSize}
               sx={{
                 borderRadius: 3,
-                // height: 40,
                 boxShadow: '0 4px 16px rgba(0, 0, 0, 0.125)',
                 '&:hover': { boxShadow: 'none' },
                 transition: '0.2s',
@@ -124,7 +123,6 @@ function ProfilePlayground() {
               size={profile.buttonSize}
               sx={{
                 borderRadius: 3,
-                // height: 40,
               }}
             >
               Предложить работу
