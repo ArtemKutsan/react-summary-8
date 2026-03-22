@@ -5,8 +5,16 @@ import Typography from '@mui/material/Typography';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import Badge from '@mui/material/Badge';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContentText from '@mui/material/DialogContentText';
+import { useState } from 'react';
 
 function ProfileCard({ profile }) {
+  const [jobDialogOpen, setJobDialogOpen] = useState(false);
+
   const handleAlertClick = () => {
     alert('Спасибо, что прочитал!');
   };
@@ -16,7 +24,11 @@ function ProfileCard({ profile }) {
   };
 
   const handleJobOfferClick = () => {
-    const confirmed = confirm(`Хочешь предложить работу ${profile.name} ${profile.surname}?`);
+    setJobDialogOpen(true);
+  };
+
+  const handleJobDialogClose = (confirmed) => {
+    setJobDialogOpen(false);
     if (confirmed) {
       alert(`Заявка отправлена! ${profile.name} ${profile.surname} получит предложение`);
     } else {
@@ -181,6 +193,44 @@ function ProfileCard({ profile }) {
             </Alert>
           </Stack>
         )}
+
+        <Dialog
+          open={jobDialogOpen}
+          onClose={() => handleJobDialogClose(false)}
+          aria-labelledby="job-dialog-title"
+          aria-describedby="job-dialog-description"
+          slotProps={{
+            paper: {
+              sx: {
+                borderRadius: 6,
+                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.375)',
+                p: 2,
+              },
+            },
+          }}
+        >
+          <DialogTitle id="job-dialog-title">Предложить работу</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Хочешь предложить работу {profile.name} {profile.surname}?
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button
+              sx={{ borderRadius: 3, height: 40 }}
+              onClick={() => handleJobDialogClose(false)}
+            >
+              Отмена
+            </Button>
+            <Button
+              sx={{ borderRadius: 3, height: 40 }}
+              onClick={() => handleJobDialogClose(true)}
+              autoFocus
+            >
+              OK
+            </Button>
+          </DialogActions>
+        </Dialog>
       </Stack>
     </Paper>
   );
